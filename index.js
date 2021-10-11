@@ -21,7 +21,7 @@ app.get("/roomDetails",async (req,res)=>{
         let clientInfo = await mongoClient.connect(dbURL)
         let db = clientInfo.db("HallBooking")
         let data = await db.collection("RoomDetails").find().toArray();
-        res.status(200).json({data})
+        res.status(200).json(data)
         clientInfo.close()
     } catch (error) {
         console.log(error)
@@ -34,7 +34,7 @@ app.get("/customerDetails",async (req,res)=>{
         let clientInfo = await mongoClient.connect(dbURL)
         let db = clientInfo.db("HallBooking")
         let data = await db.collection("CustomerDetails").find().toArray();
-        res.status(200).json({data})
+        res.status(200).json(data)
         clientInfo.close()
     } catch (error) {
         console.log(error)
@@ -48,7 +48,7 @@ app.get("/getRoomPrice/:rName",async (req,res)=>{
         let clientInfo = await mongoClient.connect(dbURL)
         let db = clientInfo.db("HallBooking")
         let data = await db.collection("RoomDetails").find({roomName : { $eq : req.params.rName }}).toArray();
-        res.status(200).json({data})
+        res.status(200).json(data)
         clientInfo.close()
     } catch (error) {
         console.log(error)
